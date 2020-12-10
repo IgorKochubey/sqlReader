@@ -36,8 +36,10 @@ public class SqlParser {
     private static Serializable getObject(String s) {
         if (s.contains(INTEGER)) {
             return Integer.valueOf(s.replace(INTEGER, EMPTY_STRING));
-        } else {
+        } else if (s.contains(STRING)) {
             return SINGLE_QUOTE + s.replace(STRING, EMPTY_STRING) + SINGLE_QUOTE;
+        } else {
+            return s;
         }
     }
 }
