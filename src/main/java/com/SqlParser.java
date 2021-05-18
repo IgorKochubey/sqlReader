@@ -10,6 +10,8 @@ public class SqlParser {
 
     private static final String INTEGER = "(Integer)";
     private static final String STRING = "(String)";
+    private static final String LOCAL_DATE = "(LocalDate)";
+    private static final String LOCAL_DATE_TIME = "(LocalDateTime)";
     private static final String EMPTY_STRING = "";
     private static final String SINGLE_QUOTE = "'";
 
@@ -38,6 +40,10 @@ public class SqlParser {
             return Integer.valueOf(s.replace(INTEGER, EMPTY_STRING));
         } else if (s.contains(STRING)) {
             return SINGLE_QUOTE + s.replace(STRING, EMPTY_STRING) + SINGLE_QUOTE;
+        } else if (s.contains(LOCAL_DATE)) {
+            return SINGLE_QUOTE + s.replace(LOCAL_DATE, EMPTY_STRING) + SINGLE_QUOTE;
+        } else if (s.contains(LOCAL_DATE_TIME)) {
+            return SINGLE_QUOTE + s.replace(LOCAL_DATE_TIME, EMPTY_STRING) + SINGLE_QUOTE;
         } else {
             return s;
         }
