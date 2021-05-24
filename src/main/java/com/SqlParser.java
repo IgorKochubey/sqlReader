@@ -9,6 +9,7 @@ import static java.util.stream.Collectors.toList;
 public class SqlParser {
 
     private static final String INTEGER = "(Integer)";
+    private static final String DOUBLE = "(Double)";
     private static final String STRING = "(String)";
     private static final String LOCAL_DATE = "(LocalDate)";
     private static final String LOCAL_DATE_TIME = "(LocalDateTime)";
@@ -38,6 +39,8 @@ public class SqlParser {
     private static Serializable getObject(String s) {
         if (s.contains(INTEGER)) {
             return Integer.valueOf(s.replace(INTEGER, EMPTY_STRING));
+        } else if (s.contains(DOUBLE)) {
+            return Double.valueOf(s.replace(DOUBLE, EMPTY_STRING));
         } else if (s.contains(STRING)) {
             return SINGLE_QUOTE + s.replace(STRING, EMPTY_STRING) + SINGLE_QUOTE;
         } else if (s.contains(LOCAL_DATE)) {
